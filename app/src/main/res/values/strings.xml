@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">SzymonApp005</string>
+    <string name="app_name">szymonapp001</string>
+    <string name="camera_button_text">camera</string>
+    <string name="albums_button_text">albums</string>
+    <string name="collage_button_text">collage</string>
+    <string name="network_button_text">network</string>
 </resources>
