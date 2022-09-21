@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         albumsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+                Intent intent = new Intent(MainActivity.this,AlbumsActivity.class);
                 intent.putExtra("name", "albums");
                 startActivity(intent);
             }
