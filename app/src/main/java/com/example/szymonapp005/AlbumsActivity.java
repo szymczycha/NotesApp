@@ -106,7 +106,7 @@ public class AlbumsActivity extends AppCompatActivity {
                         delFile.delete();
 //                        reloadArray();
                         array.remove(array.get(i));
-
+                        adapter.notifyDataSetChanged();
                     }
 
                 });
