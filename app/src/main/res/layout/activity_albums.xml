@@ -5,9 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AlbumsActivity"
-    android:background="@color/gray">
+    android:background="@color/gray"
+    android:orientation="vertical">
     <ListView
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/folderList"/>
+    <LinearLayout
+        android:layout_weight="8"
+        android:id="@+id/add_folder"
+        android:gravity="center"
+        android:background="@color/main_gray"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/plus_icon"/>
+    </LinearLayout>
 </LinearLayout>
