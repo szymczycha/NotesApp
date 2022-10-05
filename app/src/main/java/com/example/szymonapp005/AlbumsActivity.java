@@ -57,7 +57,7 @@ public class AlbumsActivity extends AppCompatActivity {
                     }
 
                 });
-                alert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                alert.setNegativeButton("Anuluj", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         //wyświetl which
                     }
