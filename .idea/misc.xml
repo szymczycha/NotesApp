@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/4pa/AndroidStudioProjects/SzymonApp005/app/src/main/res/layout/SingleImage.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/4pa/AndroidStudioProjects/SzymonApp005/app/src/main/res/layout/activity_albums.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/4pa/AndroidStudioProjects/SzymonApp005/app/src/main/res/layout/activity_folder_browser.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/4pa/AndroidStudioProjects/SzymonApp005/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/4pa/AndroidStudioProjects/SzymonApp005/app/src/main/res/layout/activity_main2.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/4pa/AndroidStudioProjects/SzymonApp005/app/src/main/res/layout/activity_second.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/4pa/AndroidStudioProjects/SzymonApp005/app/src/main/res/layout/folder_item.xml" value="0.36666666666666664" />
       </map>

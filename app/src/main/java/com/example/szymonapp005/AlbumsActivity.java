@@ -35,7 +35,11 @@ public class AlbumsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_albums);
-        pic = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_PICTURES );
+
+        File p = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_PICTURES );
+        File d = new File(p, "Konieczny");
+        d.mkdir();
+        pic = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_PICTURES + File.separator + "Konieczny" );
         array = new ArrayList<>();
         folderList = findViewById(R.id.folderList);
         addFolderButton = findViewById(R.id.add_folder);

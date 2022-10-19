@@ -54,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        File d = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_PICTURES );
+        new File(d, "Konieczny").mkdir();
+        File pic = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_PICTURES + File.separator + "Konieczny" );
+        File dir = new File(pic, "Ludzie");
+        dir.mkdir();
+        File dir2 = new File(pic, "Miejsca");
+        dir2.mkdir();
+        File dir3 = new File(pic, "Rzeczy");
+        dir3.mkdir();
         cameraButton = findViewById(R.id.camera_button);
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,12 +146,13 @@ public class MainActivity extends AppCompatActivity {
                 Bitmap b = (Bitmap) extras.get("data");
                 AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
                 alert.setTitle("Uwaga!");
-                alert.setMessage("Na pewno usunąć?");
+                alert.setMessage("Gdzie zapisać");
                 LinearLayout layout = new LinearLayout(MainActivity.this);
                 layout.setOrientation(LinearLayout.VERTICAL);
                 layout.setPadding(50,50,50,50);
-
-                File pic = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_PICTURES );
+                File d = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_PICTURES );
+                new File(d, "Konieczny").mkdir();
+                File pic = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_PICTURES + File.separator + "Konieczny" );
                 File[] files = pic.listFiles(); // tablica plików
                 for (File file : files){
                     TextView aparatButton = new TextView(MainActivity.this);
@@ -153,7 +163,30 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             // onclick buttona w tej liscie
-
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            b.compress(Bitmap.CompressFormat.JPEG, 100, stream); // kompresja, typ pliku jpg, png
+                            byte[] byteArray = stream.toByteArray();
+                            FileOutputStream fs = null;
+                            SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd_HHmmss");
+                            String fileName = df.format(new Date());
+//                            Log.d("plz", Environment.DIRECTORY_PICTURES + File.separator + file.getName() + File.separator + fileName + ".jpg");
+                            Log.d("plz", Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_PICTURES ).getPath() + File.separator + "Konieczny" + File.separator + file.getName() + File.separator + fileName + ".jpg");
+                            try {
+                                Log.d("plz", "udalo sie1");
+                                File f = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_PICTURES );
+//                                f.getPath()
+                                fs = new FileOutputStream(f.getPath() + File.separator + "Konieczny" + File.separator + file.getName() + File.separator + fileName + ".jpg");
+                                Log.d("plz", "udalo sie2");
+                                fs.write(byteArray);
+                                Log.d("plz", "udalo sie3");
+                                fs.close();
+                                Log.d("plz", "udalo sie4");
+                                Log.d("plz", byteArray.toString());
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                             Intent intent = new Intent(MainActivity.this, AlbumsActivity.class);
                             //jeśli jest dostępny aparat
                             startActivity(intent);
@@ -185,8 +218,9 @@ public class MainActivity extends AppCompatActivity {
                 LinearLayout layout = new LinearLayout(MainActivity.this);
                 layout.setOrientation(LinearLayout.VERTICAL);
                 layout.setPadding(50,50,50,50);
-
-                File pic = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_PICTURES );
+                File d = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_PICTURES );
+                new File(d, "Konieczny").mkdir();
+                File pic = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_PICTURES + File.separator + "Konieczny" );
                 File[] files = pic.listFiles(); // tablica plików
                 for (File file : files){
                     TextView aparatButton = new TextView(MainActivity.this);
@@ -203,10 +237,13 @@ public class MainActivity extends AppCompatActivity {
                             FileOutputStream fs = null;
                             SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd_HHmmss");
                             String fileName = df.format(new Date());
-                            Log.d("plz", Environment.DIRECTORY_PICTURES + File.separator + file.getName() + File.separator + fileName + ".jpg");
+//                            Log.d("plz", Environment.DIRECTORY_PICTURES + File.separator + file.getName() + File.separator + fileName + ".jpg");
+                            Log.d("plz", Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_PICTURES ).getPath() + File.separator + "Konieczny" + File.separator + file.getName() + File.separator + fileName + ".jpg");
                             try {
                                 Log.d("plz", "udalo sie1");
-                                fs = new FileOutputStream(Environment.DIRECTORY_PICTURES + File.separator + file.getName() + File.separator + fileName + ".jpg");
+                                File f = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_PICTURES );
+//                                f.getPath()
+                                fs = new FileOutputStream(f.getPath() + File.separator + "Konieczny" + File.separator + file.getName() + File.separator + fileName + ".jpg");
                                 Log.d("plz", "udalo sie2");
                                 fs.write(byteArray);
                                 Log.d("plz", "udalo sie3");
