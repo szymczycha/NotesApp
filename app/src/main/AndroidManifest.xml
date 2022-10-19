@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SzymonApp005">
         <activity
+            android:name=".SingleImage"
+            android:exported="true" />
+        <activity
             android:name=".FolderBrowserActivity"
             android:exported="true" />
         <activity
