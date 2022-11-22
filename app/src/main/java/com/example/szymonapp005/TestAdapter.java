@@ -103,7 +103,6 @@ public class TestAdapter extends ArrayAdapter {
                 alert.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
                     }
                 });
                 alert.show();
