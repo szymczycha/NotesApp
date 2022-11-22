@@ -137,4 +137,49 @@
                 android:layout_height="100dp"/>
         </LinearLayout>
     </LinearLayout>
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@color/gray"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+<!--            <ImageView-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:src="@drawable/dashboard_icon"/>-->
+<!--            <TextView-->
+<!--                android:text="@string/collage_button_text"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textSize="30dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="100dp"/>-->
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:id="@+id/albums_new_button"
+            android:gravity="center"
+            android:background="@color/gray"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/albums_new_icon"/>
+            <TextView
+                android:text="@string/albums_new_button_text"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:textSize="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"/>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

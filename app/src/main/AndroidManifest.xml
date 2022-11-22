@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SzymonApp005">
         <activity
+            android:name=".NewGalleryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewGalleriesActivity"
+            android:exported="false" />
+        <activity
             android:name=".SingleImage"
             android:exported="true" />
         <activity

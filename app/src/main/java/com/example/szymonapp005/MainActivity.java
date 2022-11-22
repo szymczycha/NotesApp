@@ -37,6 +37,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     private LinearLayout cameraButton;
+    private LinearLayout newAlbumsButton;
     private LinearLayout albumsButton;
     private LinearLayout collageButton;
     private LinearLayout networkButton;
@@ -63,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
         dir2.mkdir();
         File dir3 = new File(pic, "Rzeczy");
         dir3.mkdir();
+        newAlbumsButton = findViewById(R.id.albums_new_button);
+        newAlbumsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, NewGalleriesActivity.class);
+                startActivity(intent);
+            }
+        });
         cameraButton = findViewById(R.id.camera_button);
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
         });
         checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 100);
         checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE, 100);
+        checkPermission(Manifest.permission.CAMERA, 100);
     }
 
     @Override

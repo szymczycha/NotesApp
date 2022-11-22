@@ -52,7 +52,8 @@ public class FolderBrowserActivity extends AppCompatActivity {
             img.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(FolderBrowserActivity.this,FolderBrowserActivity.class);
+                    Intent intent = new Intent(FolderBrowserActivity.this, SingleImage.class);
+                    intent.putExtra("src", file.getAbsolutePath());
                     startActivity(intent);
                 }
             });

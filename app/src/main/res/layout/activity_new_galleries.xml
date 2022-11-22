@@ -4,29 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SingleImage"
-    android:orientation="vertical"
-    android:background="@color/gray">
-    <ImageView
+    tools:context=".NewGalleriesActivity"
+    android:background="@color/gray"
+    android:orientation="vertical">
+    <ListView
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/imageInFolder"
-        android:layout_weight="1"/>
+        android:id="@+id/folderList"/>
     <LinearLayout
+        android:layout_weight="8"
+        android:id="@+id/add_folder"
+        android:gravity="center"
+        android:background="@color/main_gray"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="9"
-        android:background="@color/gray50">
+        android:layout_height="match_parent">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:src="@drawable/plus_icon"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/pen_icon"/>
-
     </LinearLayout>
+
 </LinearLayout>
