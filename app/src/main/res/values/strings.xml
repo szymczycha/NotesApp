@@ -5,4 +5,5 @@
     <string name="albums_new_button_text">albums new</string>
     <string name="collage_button_text">collage</string>
     <string name="network_button_text">network</string>
+    <string name="notes_button_text">notes</string>
 </resources>

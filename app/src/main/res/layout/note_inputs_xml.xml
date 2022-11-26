@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="50dp"
+    android:background="@color/main_gray">
+    <TextView
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="podaj tytuł i treść notatki oraz wybierz kolor tekstu"
+        android:layout_weight="1"/>
+    <EditText
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="tytuł notatki"
+        android:id="@+id/note_title"
+        android:layout_weight="1"/>
+    <EditText
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="treść notatki"
+        android:id="@+id/note_description"
+        android:layout_weight="1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/note_colors"
+        android:orientation="horizontal"
+        android:layout_weight="1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/buttons"
+        android:orientation="horizontal"
+        android:layout_gravity=""
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:textAlignment="center"
+            android:text="OK"
+            android:textColor="@color/purple_200"
+            android:id="@+id/note_ok_button"/>
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:textAlignment="center"
+            android:text="NO"
+            android:textColor="@color/purple_200"
+            android:id="@+id/note_no_button"/>
+    </LinearLayout>
+</LinearLayout>

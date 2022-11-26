@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout albumsButton;
     private LinearLayout collageButton;
     private LinearLayout networkButton;
+    private LinearLayout notesButton;
     public void checkPermission(String permission, int requestCode) {
         // jeśli nie jest przyznane to zażądaj
         if (ContextCompat.checkSelfPermission(MainActivity.this, permission) == PackageManager.PERMISSION_DENIED) {
@@ -69,6 +70,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, NewGalleriesActivity.class);
+                startActivity(intent);
+            }
+        });
+        notesButton = findViewById(R.id.notes_button);
+        notesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, NotesActivity.class);
                 startActivity(intent);
             }
         });

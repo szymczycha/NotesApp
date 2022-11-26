@@ -3,13 +3,17 @@ package com.example.szymonapp005;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +26,16 @@ public class TestAdapter extends ArrayAdapter {
     private List<File> _list;
     private Context _context;
     private int _resource;
+    private String selectedColor;
+
+    public void setSelectedColor(String selectedColor) {
+        this.selectedColor = selectedColor;
+    }
+
+    public String getSelectedColor() {
+        return selectedColor;
+    }
+
     public TestAdapter(@NonNull Context context, int resource, @NonNull List<File> objects) {
         super(context, resource, objects);
         this._list = objects;
@@ -66,6 +80,7 @@ public class TestAdapter extends ArrayAdapter {
                         _list.get(position).delete();
                         _list.remove(position);
                         notifyDataSetChanged();
+
                     }
                 });
                 alert.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
@@ -82,12 +97,46 @@ public class TestAdapter extends ArrayAdapter {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(_context);
-                alert.setTitle("EDYCJA");
-                alert.setMessage("Edycja zdjęcia: " + _list.get(position).getAbsolutePath());
-                alert.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                View main = View.inflate(_context, R.layout.note_inputs_xml, null);
+                LinearLayout colorsView = main.findViewById(R.id.note_colors);
+                EditText titleEditText = main.findViewById(R.id.note_title);
+                EditText descriptionEditText = main.findViewById(R.id.note_description);
+                String[] colors = {"#ff0000", "#00ff00", "#102e89","#991120", "#ae0b33"};
+                for (String color :
+                        colors) {
+                    LinearLayout colorView = new LinearLayout(_context);
+                    colorView.setBackgroundColor(Color.parseColor(color));
+                    colorView.setMinimumHeight(70);
+                    colorView.setMinimumWidth(70);
+                    colorView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            titleEditText.setHintTextColor(Color.parseColor(color));
+                            titleEditText.setTextColor(Color.parseColor(color));
+                            setSelectedColor(color);
+                        }
+                    });
+                    colorsView.addView(colorView);
+                }
+
+                alert.setView(main);
+                alert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                    }
+                });
+                alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        DatabaseManager db = new DatabaseManager(
+                                _context,
+                                "NotatkiKoniecznySzymon.db",
+                                null,
+                                1
+                        );
+                        Log.d("XXX", titleEditText.getText().toString() + descriptionEditText.getText().toString() + getSelectedColor());
+                        db.insert(titleEditText.getText().toString(), descriptionEditText.getText().toString(), getSelectedColor());
                     }
                 });
                 alert.show();

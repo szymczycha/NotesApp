@@ -148,18 +148,19 @@
             android:background="@color/gray"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-<!--            <ImageView-->
-<!--                android:layout_width="100dp"-->
-<!--                android:layout_height="100dp"-->
-<!--                android:src="@drawable/dashboard_icon"/>-->
-<!--            <TextView-->
-<!--                android:text="@string/collage_button_text"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textSize="30dp"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="100dp"/>-->
+            android:layout_height="match_parent"
+            android:id="@+id/notes_button">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/pen_icon"/>
+            <TextView
+                android:text="@string/notes_button_text"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:textSize="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_weight="1"
