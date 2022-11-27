@@ -144,7 +144,7 @@ public class NotesAdapter extends ArrayAdapter {
                 public boolean onLongClick(View view) {
                     AlertDialog.Builder alert = new AlertDialog.Builder(_context);
                     View main = View.inflate(_context, R.layout.note_edit_alert, null);
-//                    AlertDialog alert1 = alert.create();
+                    AlertDialog alert1 = alert.create();
 
                     TextView deleteNoteBtn = main.findViewById(R.id.note_edit_alert_delete_button);
                     deleteNoteBtn.setOnClickListener(new View.OnClickListener() {
@@ -159,6 +159,7 @@ public class NotesAdapter extends ArrayAdapter {
                             db.delete(_notes.get(position).getId());
                             _notes.remove(position);
                             notifyDataSetChanged();
+                            alert1.dismiss();
                         }
                     });
                     TextView updateNoteBtn = main.findViewById(R.id.note_edit_alert_edit_button);
@@ -168,6 +169,7 @@ public class NotesAdapter extends ArrayAdapter {
                             setEditingId(position);
                             Log.d("XXX", String.valueOf(getEditingId()));
                             notifyDataSetChanged();
+                            alert1.dismiss();
                         }
                     });
 
@@ -183,6 +185,7 @@ public class NotesAdapter extends ArrayAdapter {
                                 }
                             });
                             notifyDataSetChanged();
+                            alert1.dismiss();
                         }
                     });
                     TextView sortColorBtn = main.findViewById(R.id.node_edit_alert_sortColor_button);
@@ -197,12 +200,15 @@ public class NotesAdapter extends ArrayAdapter {
                                 }
                             });
                             notifyDataSetChanged();
+                            alert1.dismiss();
                         }
                     });
-
-                    alert.setView(main);
-                    alert.show();
 //
+//                    alert.setView(main);
+//                    alert.show();
+//
+                    alert1.setView(main);
+                    alert1.show();
                     return true;
                 }
             });
