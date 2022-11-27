@@ -5,6 +5,23 @@ public class Note {
     private String title;
     private String description;
     private String color;
+    private String imagePath;
+
+    public Note(int id, String title, String description, String color, String imagePath) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.color = color;
+        this.imagePath = imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
 
     public void setColor(String color) {
         this.color = color;

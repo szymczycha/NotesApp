@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@color/main_gray">
+    <TextView
+        android:layout_weight="1"
+        android:layout_margin="5dp"
+        android:textSize="25dp"
+        android:text="Edycja notatek"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/white"/>
+    <TextView
+        android:layout_weight="1"
+        android:layout_margin="5dp"
+        android:text="edytuj"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/note_edit_alert_edit_button"
+        android:textColor="@color/white"/>
+    <TextView
+        android:layout_weight="1"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="usuń"
+        android:id="@+id/note_edit_alert_delete_button"
+        android:textColor="@color/white"/>
+    <TextView
+        android:layout_weight="1"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="sortuj wg tytulu"
+        android:id="@+id/note_edit_alert_sortTitle_button"
+        android:textColor="@color/white"/>
+    <TextView
+        android:layout_weight="1"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="sortuj wg koloru"
+        android:id="@+id/node_edit_alert_sortColor_button"
+        android:textColor="@color/white"/>
+</LinearLayout>

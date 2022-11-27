@@ -96,12 +96,12 @@ public class TestAdapter extends ArrayAdapter {
         iv3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(_context, R.style.MyDialogTheme);
-                View main = View.inflate(_context, R.layout.note_inputs_xml, null);
+                    AlertDialog.Builder alert = new AlertDialog.Builder(_context, R.style.MyDialogTheme);
+                    View main = View.inflate(_context, R.layout.note_inputs_xml, null);
                 LinearLayout colorsView = main.findViewById(R.id.note_colors);
                 EditText titleEditText = main.findViewById(R.id.note_title);
                 EditText descriptionEditText = main.findViewById(R.id.note_description);
-                String[] colors = {"#ff0000", "#00ff00", "#102e89","#991120", "#ae0b33"};
+                String[] colors = {"#ff0000", "#00ff00", "#102e89","#991120", "#ae0b33", "#e9b339", "#09f4ce", "#964410"};
                 setSelectedColor("#ffffff");
                 for (String color :
                         colors) {
@@ -133,9 +133,9 @@ public class TestAdapter extends ArrayAdapter {
                                 _context,
                                 "NotatkiKoniecznySzymon.db",
                                 null,
-                                4
+                                5
                         );
-                        db.insert(titleEditText.getText().toString(), descriptionEditText.getText().toString(), getSelectedColor());
+                        db.insert(titleEditText.getText().toString(), descriptionEditText.getText().toString(), getSelectedColor(), _list.get(position).getAbsolutePath());
                     }
                 });
 //                TextView noteOkButton = main.findViewById(R.id.note_ok_button);
@@ -147,7 +147,7 @@ public class TestAdapter extends ArrayAdapter {
 //                                _context,
 //                                "NotatkiKoniecznySzymon.db",
 //                                null,
-//                                4
+//                                5
 //                        );
 //                        db.insert(titleEditText.getText().toString(), descriptionEditText.getText().toString(), getSelectedColor());
 //                    }
