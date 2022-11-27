@@ -19,12 +19,15 @@
             android:layout_height="match_parent"
             android:id="@+id/note_item_id"
             android:textColor="@color/light_gray"
+            android:minHeight="25dp"
             android:text="id"
             android:layout_weight="1"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/note_item_title"
+            android:minHeight="30dp"
+            android:textSize="25dp"
             android:text="title"
             android:textColor="@color/light_gray"
             android:layout_weight="1"/>
@@ -33,6 +36,7 @@
             android:layout_height="match_parent"
             android:id="@+id/note_item_description"
             android:textColor="@color/light_gray"
+            android:minHeight="30dp"
             android:text="weight"
             android:layout_weight="1"/>
     </LinearLayout>

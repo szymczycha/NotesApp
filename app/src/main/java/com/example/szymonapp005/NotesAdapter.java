@@ -1,6 +1,7 @@
 package com.example.szymonapp005;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,7 @@ public class NotesAdapter extends ArrayAdapter {
 
         TextView tv2 = (TextView) convertView.findViewById(R.id.note_item_title);
         tv2.setText(_notes.get(position).getTitle());
+        tv2.setTextColor(Color.parseColor(_notes.get(position).getColor()));
 
         TextView tv3 = (TextView) convertView.findViewById(R.id.note_item_description);
         tv3.setText(_notes.get(position).getDescription());

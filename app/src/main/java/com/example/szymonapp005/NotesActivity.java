@@ -18,7 +18,7 @@ public class NotesActivity extends AppCompatActivity {
                 NotesActivity.this, // activity z galerią zdjęć
                 "NotatkiKoniecznySzymon.db", // nazwa bazy
                 null,
-                3 //wersja bazy, po zmianie schematu bazy należy ją zwiększyć
+                4 //wersja bazy, po zmianie schematu bazy należy ją zwiększyć
         );
         ArrayList<Note> notes = db.getAll();
         ListView notesListView = findViewById(R.id.notes_listView);

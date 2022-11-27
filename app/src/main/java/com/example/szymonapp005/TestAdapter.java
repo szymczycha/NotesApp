@@ -96,12 +96,13 @@ public class TestAdapter extends ArrayAdapter {
         iv3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(_context);
+                AlertDialog.Builder alert = new AlertDialog.Builder(_context, R.style.MyDialogTheme);
                 View main = View.inflate(_context, R.layout.note_inputs_xml, null);
                 LinearLayout colorsView = main.findViewById(R.id.note_colors);
                 EditText titleEditText = main.findViewById(R.id.note_title);
                 EditText descriptionEditText = main.findViewById(R.id.note_description);
                 String[] colors = {"#ff0000", "#00ff00", "#102e89","#991120", "#ae0b33"};
+                setSelectedColor("#ffffff");
                 for (String color :
                         colors) {
                     LinearLayout colorView = new LinearLayout(_context);
@@ -119,7 +120,6 @@ public class TestAdapter extends ArrayAdapter {
                     colorsView.addView(colorView);
                 }
 
-                alert.setView(main);
                 alert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -133,12 +133,26 @@ public class TestAdapter extends ArrayAdapter {
                                 _context,
                                 "NotatkiKoniecznySzymon.db",
                                 null,
-                                1
+                                4
                         );
-                        Log.d("XXX", titleEditText.getText().toString() + descriptionEditText.getText().toString() + getSelectedColor());
                         db.insert(titleEditText.getText().toString(), descriptionEditText.getText().toString(), getSelectedColor());
                     }
                 });
+//                TextView noteOkButton = main.findViewById(R.id.note_ok_button);
+//
+//                noteOkButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        DatabaseManager db = new DatabaseManager(
+//                                _context,
+//                                "NotatkiKoniecznySzymon.db",
+//                                null,
+//                                4
+//                        );
+//                        db.insert(titleEditText.getText().toString(), descriptionEditText.getText().toString(), getSelectedColor());
+//                    }
+//                });
+                alert.setView(main);
                 alert.show();
             }
         });
