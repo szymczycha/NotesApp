@@ -156,6 +156,7 @@ public class NotesAdapter extends ArrayAdapter {
                                     null,
                                     5
                             );
+
                             db.delete(_notes.get(position).getId());
                             _notes.remove(position);
                             notifyDataSetChanged();
