@@ -136,8 +136,7 @@ public class MainActivity extends AppCompatActivity {
         collageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
-                intent.putExtra("name", "collage");
+                Intent intent = new Intent(MainActivity.this, CollageActivity.class);
                 startActivity(intent);
             }
         });

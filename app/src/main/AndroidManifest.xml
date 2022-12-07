@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SzymonApp005">
         <activity
+            android:name=".CollageMaker"
+            android:exported="true" />
+        <activity
+            android:name=".CollageActivity"
+            android:exported="true" />
+        <activity
             android:name=".NotesActivity"
             android:exported="false" />
         <activity
