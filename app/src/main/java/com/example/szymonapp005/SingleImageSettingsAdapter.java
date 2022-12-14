@@ -67,6 +67,7 @@ public class SingleImageSettingsAdapter extends ArrayAdapter {
         LinearLayout main = convertView.findViewById(R.id.single_image_settings_main);
         label.setText(settingsList.get(position));
         switch (position){
+
             case 0:
                 icon.setImageResource(R.drawable.upload_icon);
                 main.setOnClickListener(view -> {
