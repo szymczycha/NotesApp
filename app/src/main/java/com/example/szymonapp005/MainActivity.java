@@ -152,6 +152,8 @@ public class MainActivity extends AppCompatActivity {
         checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 100);
         checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE, 100);
         checkPermission(Manifest.permission.CAMERA, 100);
+        checkPermission(Manifest.permission.INTERNET, 100);
+        checkPermission(Manifest.permission.ACCESS_NETWORK_STATE, 100);
     }
 
     @Override

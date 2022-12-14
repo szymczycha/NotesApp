@@ -6,4 +6,5 @@
     <string name="collage_button_text">collage</string>
     <string name="network_button_text">network</string>
     <string name="notes_button_text">notes</string>
+    <string name="ok">ok</string>
 </resources>
