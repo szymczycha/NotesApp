@@ -71,19 +71,26 @@ public class SingleImageSettingsAdapter extends ArrayAdapter {
             case 0:
                 icon.setImageResource(R.drawable.upload_icon);
                 main.setOnClickListener(view -> {
+                    if (preferences.getString("ip", null) != null){
+                        Log.d("xxx",preferences.getString("ip", null));
+                        ip = preferences.getString("ip",null);
+                    }
                     if(Networking.isWifiOn(context)){
+
                         Bitmap bmp = BitmapFactory.decodeFile(image.getPath());
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                        bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                        bmp.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                         byte[] byteArray = stream.toByteArray();
                         Multipart multipart = new Multipart(context);
                         multipart.addFile("image/jpeg", "file", image.getName(), byteArray);
-                        multipart.launchRequest(ip+"/uploadImage",
+                        Log.d("xxx", "http://"+ip+"/uploadImage");
+                        multipart.launchRequest("http://"+ip+"/uploadImage",
                                 response -> {
-                        Log.d("xxx", "success");
+                                    Log.d("xxx", "success");
                                 },
                                 error -> {
-                        Log.d("xxx", "error");
+                                    Log.d("XXX", error.toString());
+                                    Log.d("xxx", "error");
                                 });
                     }else{
                         AlertDialog.Builder alert = new AlertDialog.Builder(context);

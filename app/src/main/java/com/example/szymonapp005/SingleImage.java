@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,7 +39,11 @@ public class SingleImage extends AppCompatActivity {
         settingsButton = findViewById(R.id.single_image_settings_button);
         ipInput = findViewById(R.id.single_image_settings_ip);
         saveIpButton = findViewById(R.id.single_image_settings_save_ip_button);
+        SharedPreferences preferencess = PreferenceManager.getDefaultSharedPreferences(SingleImage.this);
 
+        if (preferencess.getString("ip", null) != null){
+            ipInput.setText(preferencess.getString("ip", null));
+        }
         saveIpButton.setOnClickListener(v -> {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(SingleImage.this);
             SharedPreferences.Editor editor = preferences.edit();
