@@ -84,7 +84,7 @@ public class SingleImageSettingsAdapter extends ArrayAdapter {
                         Multipart multipart = new Multipart(context);
                         multipart.addFile("image/jpeg", "file", image.getName(), byteArray);
                         Log.d("xxx", "http://"+ip+"/uploadImage");
-                        multipart.launchRequest("http://"+ip+"/uploadImage",
+                        multipart.launchRequest("http://"+ip+":3000/uploadImage",
                                 response -> {
                                     Log.d("xxx", "success");
                                 },

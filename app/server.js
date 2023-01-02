@@ -1,57 +1,61 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const formidable = require('formidable');
 const path = require('path');
 const app = express();
-
+const fs = require('fs');
+app.use(
+    bodyParser.urlencoded({
+        extended: true,
+    })
+);
+app.use(express.static(__dirname+"/uploaded"))
 app.get('/', (req, res) => {
     res.send(`
-    <h2>With <code>"express"</code> npm package</h2>
-    <form action="/api/upload" enctype="multipart/form-data" method="post">
-      <div>Text field title: <input type="text" name="title" /></div>
-      <div>File: <input type="file" name="someExpressFiles" multiple="multiple" /></div>
-      <input type="submit" value="Upload" />
-    </form>
+    <div>Chyba dziala</div>
   `);
 });
 
-app.post('/uploadImage', (req, res, next) => {
+const uploadFolder = path.join(__dirname, "uploaded");
+app.post('/uploadImage', async (req, res) => {
     console.log("post")
-    const uploadFolder = path.join(__dirname, "uploaded");
     const form = formidable({ multiples: true, uploadDir: uploadFolder });
+    form.keepExtensions = true;
     form.parse(req, (err, fields, files) => {
         if (err) {
-            next(err);
             return;
         }
+
         console.log(fields)
         console.log(files)
-        files.forEach(async file => {
-            console.log(file)
-            // await File.create()
-        });
         res.json({ fields, files });
     });
 });
-
-
-app.get('/uploadImage', (req, res, next) => {
-    console.log("get")
-    const uploadFolder = path.join(__dirname, "uploaded");
-    const form = formidable({ multiples: true, uploadDir: uploadFolder });
-    form.parse(req, (err, fields, files) => {
-        if (err) {
-            next(err);
+app.get('/photos', (req,res) => {
+    const data = [];
+    fs.readdir(uploadFolder,(err, files)=>{
+        if(err){
             return;
         }
-        console.log(fields)
-        console.log(files)
-        files.forEach(async file => {
-            console.log(file)
-            // await File.create()
+        console.log(files);
+        files.forEach(file => {
+            console.log(path.join(uploadFolder, file))
+            const stats = fs.statSync(path.join(uploadFolder, file))
+            
+            let obj = {
+                name: file,
+                url: "/uploaded/"+file,
+                creationTime: stats.birthtimeMs,
+                size: stats.size
+            }
+            console.log(obj)
+            data.push(obj)
+            console.log(data);
+            
         });
-        res.json({ fields, files });
-    });
-});
+        res.json(data);
+    })
+})
 
 app.listen(3000, () => {
     console.log('Server listening on http://localhost:3000 ...');

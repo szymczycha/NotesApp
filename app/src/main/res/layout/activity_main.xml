@@ -12,36 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/main_gray">
-        <LinearLayout
-            android:layout_weight="2"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/main_slider"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/left_icon"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal">
-            <ProgressBar
-                android:layout_width="100dp"
-                android:layout_height="100dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/right_icon"/>
-        </LinearLayout>
+            android:layout_height="match_parent"/>
     </LinearLayout>
 
     <LinearLayout

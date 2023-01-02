@@ -5,6 +5,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -25,6 +27,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -42,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout collageButton;
     private LinearLayout networkButton;
     private LinearLayout notesButton;
+    private ArrayList<SliderItem> list = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private RecAdapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+
     public void checkPermission(String permission, int requestCode) {
         // jeśli nie jest przyznane to zażądaj
         if (ContextCompat.checkSelfPermission(MainActivity.this, permission) == PackageManager.PERMISSION_DENIED) {
@@ -149,6 +162,49 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        recyclerView = findViewById(R.id.main_slider);
+        JsonArrayRequest jsonRequest = new JsonArrayRequest(
+                Request.Method.GET,
+                "url",
+                null,
+                response -> {
+                    Log.d("xxx", "response: " + response);
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject responseObj = null;
+                        try {
+                            responseObj = response.getJSONObject(i);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        SliderItem listItem = null;
+                        try {
+                            listItem = new SliderItem(
+                                    responseObj.getString("name"),
+                                    responseObj.getString("url"),
+                                    responseObj.getDouble("creationTime"),
+                                    responseObj.getInt("size")
+                            );
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        list.add(listItem);
+
+                    }
+
+                    recyclerAdapter = new RecAdapter(list, context);
+                    recyclerView.setAdapter(recyclerAdapter);
+
+
+                },
+                error -> {
+
+                    Log.d("xxx", "error" + error.getMessage());
+                }
+        );
+        layoutManager = new LinearLayoutManager(MainActivity.this);
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new RecAdapter(list);
+        recyclerView.setAdapter(adapter);
         checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 100);
         checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE, 100);
         checkPermission(Manifest.permission.CAMERA, 100);
