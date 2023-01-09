@@ -52,6 +52,7 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.ViewHolder>{
             .get()
             .load(url)
             .into(holder.img);
+        holder.img.setScaleType(ImageView.ScaleType.CENTER_CROP);
     }
 
     @Override
