@@ -100,6 +100,8 @@ public class SingleImageSettingsAdapter extends ArrayAdapter {
                         alert.show();
                     }
                 });
+            case 3:
+            default:
         }
         return convertView;
     }

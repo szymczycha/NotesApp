@@ -60,6 +60,9 @@ public class SingleImage extends AppCompatActivity {
         });
         ArrayList<String> settings = new ArrayList<>();
         settings.add("Upload");
+        settings.add("Share");
+        settings.add("Crop");
+        settings.add("Effects");
 
         SingleImageSettingsAdapter adapter = new SingleImageSettingsAdapter(
                 SingleImage.this,
