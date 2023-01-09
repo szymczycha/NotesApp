@@ -56,6 +56,11 @@ app.get('/photos', (req,res) => {
         res.json(data);
     })
 })
+app.get('/photo', (req,res) => {
+    let imageName = req.query.imgName
+    console.log(path.join(uploadFolder, imageName))
+    res.sendFile(path.join(uploadFolder, imageName));
+})
 
 app.listen(3000, () => {
     console.log('Server listening on http://localhost:3000 ...');

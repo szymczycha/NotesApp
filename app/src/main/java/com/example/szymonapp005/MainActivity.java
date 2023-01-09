@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,6 +19,7 @@ import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -28,7 +30,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -162,10 +166,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        String ip = "";
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+
+        if (preferences.getString("ip", null) != null){
+            Log.d("xxx",preferences.getString("ip", null));
+            ip = preferences.getString("ip",null);
+        }
         recyclerView = findViewById(R.id.main_slider);
+        RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
         JsonArrayRequest jsonRequest = new JsonArrayRequest(
                 Request.Method.GET,
-                "url",
+                "http://"+ip+":3000/photos",
                 null,
                 response -> {
                     Log.d("xxx", "response: " + response);
@@ -191,9 +203,11 @@ public class MainActivity extends AppCompatActivity {
 
                     }
 
-                    recyclerAdapter = new RecAdapter(list, context);
-                    recyclerView.setAdapter(recyclerAdapter);
-
+//                    recyclerAdapter = new RecAdapter(list, context);
+//                    recyclerView.setAdapter(recyclerAdapter);
+                    Log.d("xxx", list.toString());
+                    adapter = new RecAdapter(list, MainActivity.this);
+                    recyclerView.setAdapter(adapter);
 
                 },
                 error -> {
@@ -201,10 +215,9 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("xxx", "error" + error.getMessage());
                 }
         );
-        layoutManager = new LinearLayoutManager(MainActivity.this);
+        requestQueue.add(jsonRequest);
+        layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new RecAdapter(list);
-        recyclerView.setAdapter(adapter);
         checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 100);
         checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE, 100);
         checkPermission(Manifest.permission.CAMERA, 100);
