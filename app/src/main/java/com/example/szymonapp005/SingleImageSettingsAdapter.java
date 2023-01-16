@@ -1,6 +1,8 @@
 package com.example.szymonapp005;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -100,8 +102,30 @@ public class SingleImageSettingsAdapter extends ArrayAdapter {
                         alert.show();
                     }
                 });
+                break;
+            case 1:
+                icon.setImageResource(R.drawable.share_icon);
+                break;
+            case 2:
+                icon.setImageResource(R.drawable.crop_icon);
+                break;
             case 3:
+                icon.setImageResource(R.drawable.star_icon);
+                main.setOnClickListener((view) -> {
+                    Intent intent = new Intent(context, EffectsActivity.class);
+                    intent.putExtra("imagePath", image.getPath());
+                    Bitmap bmp = BitmapFactory.decodeFile(image.getPath());
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    bmp.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                    Imaging.image = stream.toByteArray();
+//                    context.startActivity(intent);
+
+//                    intent.setType("image/*");
+                    ((Activity)context).startActivityForResult(intent, 100); // 100 - stała wartość, która później posłuży do identyfikacji tej akcji
+                });
+                break;
             default:
+                break;
         }
         return convertView;
     }

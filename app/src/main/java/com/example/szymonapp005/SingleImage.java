@@ -1,9 +1,11 @@
 package com.example.szymonapp005;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -28,11 +30,12 @@ public class SingleImage extends AppCompatActivity {
     private EditText ipInput;
     private Button saveIpButton;
     private String ip = "192.168.119.108";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_image);
-
+//        startActivityForResult();
         main = findViewById(R.id.single_image_main_layout);
         img = findViewById(R.id.imageInFolder);
         settingsListView = findViewById(R.id.single_image_settings_list);
@@ -82,5 +85,11 @@ public class SingleImage extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
     }
 }
