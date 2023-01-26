@@ -6,35 +6,80 @@
     android:layout_height="match_parent"
     android:id="@+id/single_image_main_layout"
     tools:context=".SingleImage">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/gray">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/imageInFolder"
-            android:layout_weight="1"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="9"
-            android:background="@color/gray50">
+            android:layout_height="50dp"
+            android:background="@color/gray50"
+            android:id="@+id/single_image_top_menu">
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:src="@drawable/brightness_icon"
+                android:id="@+id/single_image_brightness"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:src="@drawable/contrast_icon"
+                android:id="@+id/single_image_contrast"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:src="@drawable/saturation_icon"
+                android:id="@+id/single_image_saturation"/>
+
+        </LinearLayout>
+        <ImageView
+            android:layout_width="411dp"
+            android:layout_height="600dp"
+            android:layout_weight="1"
+            android:id="@+id/imageInFolder"
+            android:layout_centerVertical="true"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/gray50"
+            android:id="@+id/single_image_bottom_menu"
+            android:layout_alignParentBottom="true">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:src="@drawable/plus_icon"/>
             <ImageView
                 android:id="@+id/single_image_settings_button"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:src="@drawable/settings_icon"/>
 
         </LinearLayout>
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:id="@+id/single_image_blackout">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/single_image_blackout_text"/>
+        </LinearLayout>
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:min="0"
+            android:progress="1"
+            android:layout_centerVertical="true"
+            android:id="@+id/single_image_slider"/>
+    </RelativeLayout>
     <LinearLayout
         android:layout_gravity="start"
         android:layout_width="300dp"

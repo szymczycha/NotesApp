@@ -43,6 +43,28 @@ public class Imaging {
         matrixImage = b;
         return b;
     }
+    public static Bitmap applyMatrixToBitmap(float[] matrix, Bitmap inputBmp){
+        ColorMatrix cMatrix = new ColorMatrix();
+        cMatrix.set(matrix);
+        Paint paint = new Paint();
+        Bitmap b = Bitmap.createBitmap(inputBmp.getWidth(), inputBmp.getHeight(),inputBmp.getConfig());
+        paint.setColorFilter(new ColorMatrixColorFilter(cMatrix));
+        Canvas canvas = new Canvas(b);
+        canvas.drawBitmap(inputBmp, 0, 0, paint);
+        matrixImage = b;
+        return b;
+    }
+    public static Bitmap applySaturation(float saturation, Bitmap inputBmp){
+        ColorMatrix cMatrix = new ColorMatrix();
+        cMatrix.setSaturation(saturation);
+        Paint paint = new Paint();
+        Bitmap b = Bitmap.createBitmap(inputBmp.getWidth(), inputBmp.getHeight(),inputBmp.getConfig());
+        paint.setColorFilter(new ColorMatrixColorFilter(cMatrix));
+        Canvas canvas = new Canvas(b);
+        canvas.drawBitmap(inputBmp, 0, 0, paint);
+        matrixImage = b;
+        return b;
+    }
 }
 
 

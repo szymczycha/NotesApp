@@ -15,11 +15,16 @@
             android:id="@+id/effects_container"
             android:orientation="horizontal" />
     </HorizontalScrollView>
-    <ImageView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:id="@+id/effects_image"/>
+        android:id="@+id/effects_image_frame">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/effects_image"/>
+    </FrameLayout>
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="50dp"

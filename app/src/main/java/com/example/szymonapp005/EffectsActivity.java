@@ -2,14 +2,20 @@ package com.example.szymonapp005;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.io.ByteArrayOutputStream;
 
 public class EffectsActivity extends AppCompatActivity {
     private ImageView image;
@@ -114,7 +120,14 @@ public class EffectsActivity extends AppCompatActivity {
         confirmButton.setImageResource(R.drawable.check_icon);
 
         confirmButton.setOnClickListener(view -> {
-
+            Bitmap b = ((BitmapDrawable)image.getDrawable()).getBitmap();
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            b.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byte[] bArray = stream.toByteArray();
+            Imaging.image = bArray;
+            Intent returnIntent = new Intent();
+            setResult(200,returnIntent);
+            finish();
         });
     }
 }
